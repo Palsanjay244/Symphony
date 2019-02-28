@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import ReactPlayer from 'react-player';
 
 class ProfileCreds extends Component {
   render() {
@@ -15,7 +15,8 @@ class ProfileCreds extends Component {
         <p>
           {exp.description === '' ? null : (
             <span>
-              <strong>Link: </strong><p className="lead"><iframe width="400" height="250" src={exp.description} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+              <strong>Song: </strong><p className="lead">
+              <ReactPlayer url={exp.description} controls='false' width='400px' height='220px' /></p>
             </span>
           )}
         </p>

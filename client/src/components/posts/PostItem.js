@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import { deletePost, addLike, removeLike } from '../../actions/postActions';
+import ReactPlayer from 'react-player';
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -17,7 +18,7 @@ class PostItem extends Component {
   onUnlikeClick(id) {
     this.props.removeLike(id);
   }
-
+  
   findUserLike(likes) {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) {
@@ -49,7 +50,9 @@ class PostItem extends Component {
           
           <div className="col-md-10">
             <center>
-            <p className="lead"><iframe width="400" height="250" src={post.text} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p></center>
+            <p className="lead">
+            <ReactPlayer url={post.text} controls='false'/>
+            </p></center>
             {showActions ? (
               <center>
               <span>
